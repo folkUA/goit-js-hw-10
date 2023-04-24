@@ -35,11 +35,13 @@ function onInput(evt) {
 }
 
 function markup(data) {
-  let mark = data.map(country => {
-   return `<li class="flag">
+  let mark = data
+    .map(country => {
+      return `<li class="flag">
         <img src="${country.flags.svg}" alt="${country.name.official}" width="50" height="25">
         <h2>${country.name.official}</h2></li>`;
-  }).join('');
+    })
+    .join('');
   console.log(mark);
   list.innerHTML = mark;
   if (data.length > 1) {
