@@ -20,6 +20,7 @@ function onInput(evt) {
   fetchCountries(country)
     .then(data => {
       if (data.length > 10) {
+        list.innerHTML = '';
         Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
@@ -27,10 +28,13 @@ function onInput(evt) {
       }
       markup(data);
     })
-    .catch(() => {
+    .catch(err => {
       info.innerHTML = '';
       list.innerHTML = '';
-      Notify.failure('Oops, there is no country with that name');
+      if (Number(err.message) === 404) {
+        Notify.failure('Oops, there is no country with that name');
+      }
+      console.log(err);
     });
 }
 
@@ -42,7 +46,7 @@ function markup(data) {
         <h2>${country.name.official}</h2></li>`;
     })
     .join('');
-  console.log(mark);
+
   list.innerHTML = mark;
   if (data.length > 1) {
     info.innerHTML = '';
