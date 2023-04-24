@@ -18,3 +18,24 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.flag {
+  display: flex;
+  align-items: center;
+}
+h2 {
+  margin-left: 10px;
+}
+p {
+  margin-left: 65px;
+  margin-top: 0;
+}
+span {
+  font-weight: 700;
+  font-size: medium;
+}
